@@ -136,14 +136,14 @@ jobs:
       shell: bash
       run: cmake --build . --parallel 3
 
-    - name: Bundle Qt DLLs on Windows
+    - name: Package with CPack (Windows)
       if: startsWith(matrix.os, 'windows')
-      shell: cmd
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
       run: |
-        windeployqt "%RUNNER_WORKSPACE%\build\Release\otter-browser.exe" --dir "%RUNNER_WORKSPACE%\build\Release" --webengine --compiler-runtime --release
+        cpack -C Release
 
     - name: Upload build artifacts
-      if: ${{ always() }}
       uses: actions/upload-artifact@v6
       with:
         name: otter-${{ matrix.os }}-${{ matrix.build_type }}-${{ matrix.qt_version }}
