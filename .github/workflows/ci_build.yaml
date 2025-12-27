@@ -54,7 +54,7 @@ jobs:
         fetch-depth: 1
 
     - name: Cache Qt
-      if: !startsWith(matrix.qt_version, 'repository')
+      if: ${{ !startsWith(matrix.qt_version, 'repository') }}
       id: cache-qt
       uses: actions/cache@v2
       with:
@@ -62,7 +62,7 @@ jobs:
         key: ${{runner.os}}-QtCache
 
     - name: Install Qt ${{matrix.qt_version}} with QtWebEngine
-      if: startsWith(matrix.os, 'windows') && startsWith(matrix.build_type, 'qtwebengine') || startsWith(matrix.os, 'macos') && startsWith(matrix.build_type, 'qtwebengine') || startsWith(matrix.os, 'ubuntu') && !startsWith(matrix.qt_version, 'repository') && startsWith(matrix.build_type, 'qtwebengine')
+      if: ${{ (startsWith(matrix.os, 'windows') && startsWith(matrix.build_type, 'qtwebengine')) || (startsWith(matrix.os, 'macos') && startsWith(matrix.build_type, 'qtwebengine')) || (startsWith(matrix.os, 'ubuntu') && !startsWith(matrix.qt_version, 'repository') && startsWith(matrix.build_type, 'qtwebengine')) }}
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{matrix.qt_version}}
@@ -70,7 +70,7 @@ jobs:
         cached: ${{steps.cache-qt.outputs.cache-hit}}
 
     - name: Install Qt ${{matrix.qt_version}} without QtWebEngine
-      if: startsWith(matrix.os, 'windows') && startsWith(matrix.build_type, 'qtwebkit') || startsWith(matrix.os, 'macos') && startsWith(matrix.build_type, 'qtwebkit') || startsWith(matrix.os, 'ubuntu') && !startsWith(matrix.qt_version, 'repository') && startsWith(matrix.build_type, 'qtwebkit')
+      if: ${{ (startsWith(matrix.os, 'windows') && startsWith(matrix.build_type, 'qtwebkit')) || (startsWith(matrix.os, 'macos') && startsWith(matrix.build_type, 'qtwebkit')) || (startsWith(matrix.os, 'ubuntu') && !startsWith(matrix.qt_version, 'repository') && startsWith(matrix.build_type, 'qtwebkit')) }}
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{matrix.qt_version}}
