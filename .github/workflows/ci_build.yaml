@@ -22,19 +22,19 @@ jobs:
               build_type: qtwebengine without hunspell
               qt_version: 5.15.2
 
-            - os: ubuntu-18.04
+            - os: ubuntu-22.04
               build_type: qtwebkit with hunspell
               qt_version: repository
               apt-dependencies: git build-essential cmake qtbase5-dev libqt5core5a libqt5gui5 libqt5multimedia5 qtmultimedia5-dev libqt5network5 libqt5printsupport5 libqt5qml5 qtdeclarative5-dev libqt5svg5 libqt5svg5-dev libqt5widgets5 libhunspell-dev libqt5webkit5 libqt5webkit5-dev
-            - os: ubuntu-18.04
+            - os: ubuntu-22.04
               build_type: qtwebkit without hunspell
               qt_version: repository
               apt-dependencies: git build-essential cmake qtbase5-dev libqt5core5a libqt5gui5 libqt5multimedia5 qtmultimedia5-dev libqt5network5 libqt5printsupport5 libqt5qml5 qtdeclarative5-dev libqt5svg5 libqt5svg5-dev libqt5widgets5 libqt5webkit5 libqt5webkit5-dev
-            - os: ubuntu-18.04
+            - os: ubuntu-22.04
               build_type: qtwebengine with hunspell
               qt_version: 5.15.2
               apt-dependencies: git build-essential cmake libhunspell-dev
-            - os: ubuntu-20.04
+            - os: ubuntu-24.04
               build_type: qtwebkit with hunspell
               qt_version: repository
               apt-dependencies: git build-essential cmake qtbase5-dev libqt5core5a libqt5gui5 libqt5multimedia5 qtmultimedia5-dev libqt5network5 libqt5printsupport5 libqt5qml5 qtdeclarative5-dev libqt5svg5 libqt5svg5-dev libqt5widgets5 libhunspell-dev libqt5webkit5 libqt5webkit5-dev
